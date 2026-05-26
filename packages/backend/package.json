@@ -10,13 +10,15 @@
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "postinstall": "prisma generate"
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma",
     "seed": "tsx src/prisma/seed.ts"
   },
   "dependencies": {
+    "@chat-app/shared": "*",
     "@prisma/client": "^6.19.3",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
