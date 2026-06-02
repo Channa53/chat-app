@@ -2,18 +2,20 @@ export class AppError extends Error {
   public readonly statusCode: number;
   public readonly isOperational: boolean;
   public readonly code: string | undefined;
+  public readonly details: unknown;
 
-  constructor(message: string, statusCode: number, code?: string) {
+  constructor(message: string, statusCode: number, code?: string, details?: unknown) {
     super(message);
     this.name = 'AppError';
     this.statusCode = statusCode;
     this.isOperational = true;
     this.code = code;
+    this.details = details;
     Error.captureStackTrace(this, this.constructor);
   }
 
-  static badRequest(message: string, code?: string): AppError {
-    return new AppError(message, 400, code);
+  static badRequest(message: string, code?: string, details?: unknown): AppError {
+    return new AppError(message, 400, code, details);
   }
 
   static unauthorized(message = 'Unauthorized', code?: string): AppError {

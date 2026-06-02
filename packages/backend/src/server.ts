@@ -5,6 +5,7 @@ import express from 'express';
 
 import { errorHandler, notFoundHandler } from '@/middleware/error-handler.js';
 import { requestLogger } from '@/middleware/request-logger.js';
+import { authRouter } from '@/routes/auth-routes.js';
 import { healthRouter } from '@/routes/health-routes.js';
 import { prisma } from '@/utils/prisma.js';
 
@@ -18,6 +19,7 @@ app.use(express.json({ limit: '1mb' }));
 app.use(requestLogger);
 
 app.use('/api/health', healthRouter);
+app.use('/api/auth', authRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
