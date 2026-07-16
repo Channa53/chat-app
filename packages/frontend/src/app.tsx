@@ -8,6 +8,7 @@ import { AppLayout } from '@/components/layout/app-layout';
 import { AdminPage } from '@/components/pages/admin-page';
 import { ChatPage } from '@/components/pages/chat-page';
 import { LoginPage } from '@/components/pages/login-page';
+import { ProfilePage } from '@/components/pages/profile-page';
 import { RegisterPage } from '@/components/pages/register-page';
 import { queryClient } from '@/utils/query-client';
 
@@ -22,6 +23,7 @@ export const App: FC = () => {
             <Route element={<ProtectedRoute />}>
               <Route element={<AppLayout />}>
                 <Route path="/chat" element={<ChatPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
                 <Route path="/admin" element={<AdminPage />} />
               </Route>
             </Route>

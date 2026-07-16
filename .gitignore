@@ -25,6 +25,9 @@ test-results/
 packages/backend/src/prisma/generated/
 packages/backend/prisma/generated/
 
+# User uploads (avatars, attachments)
+packages/backend/uploads/
+
 # Logs
 logs/
 *.log

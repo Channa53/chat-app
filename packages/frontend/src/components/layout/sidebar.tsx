@@ -1,4 +1,4 @@
-import { MessageSquare, Settings, Shield } from 'lucide-react';
+import { MessageSquare, Shield, UserCircle } from 'lucide-react';
 import { type FC } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -43,13 +43,20 @@ export const Sidebar: FC = () => {
       </nav>
 
       <div className="border-t border-border p-2">
-        <button
-          type="button"
-          className="flex w-full items-center gap-2 rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:bg-surface-hover hover:text-foreground"
+        <NavLink
+          to="/profile"
+          className={({ isActive }) =>
+            cn(
+              'flex items-center gap-2 rounded-md px-3 py-2 text-sm transition-colors',
+              isActive
+                ? 'bg-surface-hover text-foreground'
+                : 'text-muted-foreground hover:bg-surface-hover hover:text-foreground'
+            )
+          }
         >
-          <Settings className="h-4 w-4" />
-          Settings
-        </button>
+          <UserCircle className="h-4 w-4" />
+          Profile
+        </NavLink>
       </div>
     </aside>
   );

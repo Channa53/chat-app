@@ -98,8 +98,8 @@
 
 > CRUD for chat rooms and messages via REST API before adding real-time.
 
-### 3.1 Chat room endpoints
-- [ ] `POST /api/rooms` — create a new room (group or direct)
+#
+- [ ] `P## 3.1 Chat room endpointsOST /api/rooms` — create a new room (group or direct)
 - [ ] `GET /api/rooms` — list rooms for current user
 - [ ] `GET /api/rooms/:id` — get room details + members
 - [ ] `PATCH /api/rooms/:id` — update room name (group only, by admin/owner)

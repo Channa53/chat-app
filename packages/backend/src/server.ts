@@ -5,8 +5,10 @@ import express from 'express';
 
 import { errorHandler, notFoundHandler } from '@/middleware/error-handler.js';
 import { requestLogger } from '@/middleware/request-logger.js';
+import { UPLOADS_ROOT } from '@/middleware/upload.js';
 import { authRouter } from '@/routes/auth-routes.js';
 import { healthRouter } from '@/routes/health-routes.js';
+import { userRouter } from '@/routes/user-routes.js';
 import { prisma } from '@/utils/prisma.js';
 
 const PORT = Number(process.env.PORT ?? 4000);
@@ -18,8 +20,11 @@ app.use(cors({ origin: CORS_ORIGIN, credentials: true }));
 app.use(express.json({ limit: '1mb' }));
 app.use(requestLogger);
 
+app.use('/api/avatars', express.static(`${UPLOADS_ROOT}/avatars`, { maxAge: '7d', fallthrough: false }));
+
 app.use('/api/health', healthRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/users', userRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
