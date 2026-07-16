@@ -8,6 +8,7 @@ import { requestLogger } from '@/middleware/request-logger.js';
 import { UPLOADS_ROOT } from '@/middleware/upload.js';
 import { authRouter } from '@/routes/auth-routes.js';
 import { healthRouter } from '@/routes/health-routes.js';
+import { roomRouter } from '@/routes/room-routes.js';
 import { userRouter } from '@/routes/user-routes.js';
 import { prisma } from '@/utils/prisma.js';
 
@@ -25,6 +26,7 @@ app.use('/api/avatars', express.static(`${UPLOADS_ROOT}/avatars`, { maxAge: '7d'
 app.use('/api/health', healthRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/users', userRouter);
+app.use('/api/rooms', roomRouter);
 
 app.use(notFoundHandler);
 app.use(errorHandler);
